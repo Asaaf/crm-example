@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from 'src/app/environments/environment';
+import { User } from 'src/app/models/user/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  token?: string;
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
-    return this.http.post<any>(environment.URL_API + '/auth/local', { email: username, password: password }, { observe: 'response' });
+  public registryUser(newUser: User) {
+    let params ={ username: newUser.firstname+" "+newUser.lastname, email: newUser.email, password: newUser.password };
+    return this.http.post<any>(
+      environment.URL_API + "/auth/local/register",
+      params
+    );
   }
 
 }

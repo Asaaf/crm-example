@@ -5,17 +5,19 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { MainComponent } from './components/main/main.component';
 import { RegistryComponent } from './components/registry/registry.component';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     RegistryComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule
   ]
 })
 export class AuthModule { }
