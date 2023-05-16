@@ -1,22 +1,26 @@
 <h1>Registrate</h1>
-<form (ngSubmit)="send()">
+<form (ngSubmit)="send()" [formGroup]="registryForm">
     <div class="control-group">
         <label for="firstname">Nombres:</label>
-        <input [(ngModel)]="newUser.firstname" name="firstname" type="text" placeholder="Ingresa primer y segundo nombre">
+        <input [(ngModel)]="newUser.firstname" formControlName="firstname" name="firstname" type="text" placeholder="Ingresa primer y segundo nombre">
+        <span *ngIf="registryForm.get('firstname')?.invalid && registryForm.get('firstname')?.errors?.['required']" class="form-message"> (Campo requerido)</span>
     </div>
     <div class="control-group">
         <label for="lastname">Apellidos:</label>
-        <input [(ngModel)]="newUser.lastname" name="lastname" type="text" id="lastname" placeholder="Ingresa primer y segundo apellido">
+        <input [(ngModel)]="newUser.lastname" formControlName="lastname" name="lastname" type="text" id="lastname" placeholder="Ingresa primer y segundo apellido">
+        <span *ngIf="registryForm.get('lastname')?.invalid && registryForm.get('lastname')?.errors?.['required']" class="form-message"> (Campo requerido)</span>
     </div>
     <div class="control-group">
         <label for="email">Correo:</label>
-        <input [(ngModel)]="newUser.email" name="email" type="email" id="email" placeholder="Ingresa correo">
+        <input [(ngModel)]="newUser.email" formControlName="email" name="email" type="email" id="email" placeholder="Ingresa correo">
+        <span *ngIf="registryForm.get('email')?.invalid && registryForm.get('email')?.errors?.['required']" class="form-message"> (Campo requerido)</span>
+        <span *ngIf="registryForm.get('email')?.invalid && registryForm.get('email')?.errors?.['email'] && !registryForm.get('email')?.errors?.['required']" class="form-message"> (Correo inválido)</span>
     </div>
     <div class="control-group">
         <label for="password">Contraseña:</label>
-        <input [(ngModel)]="newUser.password"  name="password" type="password" id="password" placeholder="Ingresa la contraseña">
+        <input [(ngModel)]="newUser.password" formControlName="password" name="password" type="password" id="password" placeholder="Ingresa la contraseña">
     </div>
     <div class="control-group">
-        <input type="submit" value="Registrarse">
+        <button type="submit" class="btn btn-primary">Registrarse</button>
     </div>
 </form>

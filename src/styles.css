@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+
+:root {
+    --color-1: #4C4C6D;
+    --color-2: #1B9C85;
+    --color-3: #E8F6EF;
+    --color-4: #FFE194;
+    --primary-font: 'Open Sans', sans-serif
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-3);
+    font-family: var(--primary-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-align: center;
+    color: var(--color-4)
+}
+
+input {
+    padding: 6px;
+    outline: none;
+    font-family: var(--primary-font);
+    font-size: 15px;
+    width: calc(100% + 60px);
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+}
+
+.btn {
+    border: 0;
+    font-family: var(--primary-font);
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 3px;
+    margin: 12px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    position: relative;
+    background: var(--color-4);
+    color: var(--color-1);
+}
+
+.btn-primary::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: var(--color-1);
+    border-radius: 3px;
+    transition: all 0.3s linear;
+    mix-blend-mode: overlay;
+}
+
+.btn-primary:hover::after {
+    width: 100%;
+}
